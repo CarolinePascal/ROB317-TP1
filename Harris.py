@@ -1,6 +1,5 @@
 import numpy as np
 import cv2
-import skimage as sk
 
 from matplotlib import pyplot as plt
 
@@ -83,7 +82,7 @@ for y in range(1,h-1):
 # Calcul des maxima locaux et seuillage
 Theta_maxloc = cv2.copyMakeBorder(Theta,0,0,0,0,cv2.BORDER_REPLICATE)
 d_maxloc = 3
-seuil_relatif = 0.01
+seuil_relatif = 0.001
 se = np.ones((d_maxloc,d_maxloc),np.uint8)
 Theta_dil = cv2.dilate(Theta,se)
 #Suppression des non-maxima-locaux
@@ -120,6 +119,9 @@ Img_pts[Theta_ml_dil > 0] = [255,0,0]
 plt.subplot(133)
 plt.imshow(Img_pts)
 plt.title('Points de Harris')
+
+#Pour télécharger l'image avec les points de Harris calculés
+#cv2.imwrite("sigma2_5.png", Img_pts)
 
 #Comparaison avec la fonction cv2.cornerHarris
 
