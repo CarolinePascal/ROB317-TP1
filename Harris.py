@@ -65,7 +65,7 @@ Ix2 = Ix**2
 Iy2 = Iy**2
 IxIy = np.multiply(Ix,Iy)
 
-#Moyennage de la matrice d'auto-crorélation
+#Moyennage de la matrice d'auto-corrélation
 Ix2 = cv2.GaussianBlur(Ix2,(size2,size2),sigmaX=sigma2,sigmaY=sigma2)
 Iy2 = cv2.GaussianBlur(Iy2,(size2,size2),sigmaX=sigma2,sigmaY=sigma2)
 IxIy = cv2.GaussianBlur(IxIy,(size2,size2),sigmaX=sigma2,sigmaY=sigma2)
@@ -77,7 +77,7 @@ Theta = cv2.copyMakeBorder(img,0,0,0,0,cv2.BORDER_REPLICATE)
 for y in range(1,h-1):
     for x in range(1,w-1):
         mat = np.array([[Ix2[y,x],IxIy[y,x]],[IxIy[y,x],Iy2[y,x]]])
-        val = np.linalg.det(mat) - alpha*np.trace(mat)
+        val = np.linalg.det(mat) - alpha*(np.trace(mat)**2)
         Theta[y,x] = val
 
 # Calcul des maxima locaux et seuillage
