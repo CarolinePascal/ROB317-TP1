@@ -94,6 +94,10 @@ print("Calcul de l'appariement :",time,"s")
 # Trace les N meilleurs appariements
 Nbest = 200
 img3 = cv2.drawMatches(img1,pts1,img2,pts2,matches[:Nbest],None,flags=2)
+
+# Save image of the best matches
+#cv2.imwrite("cross_check_matches.png", img3)
+
 plt.imshow(img3),plt.title('%i meilleurs appariements'%Nbest)
 plt.show()
 

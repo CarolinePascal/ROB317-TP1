@@ -98,6 +98,9 @@ draw_params = dict(matchColor = (0,255,0),
                    flags = 0)
 img3 = cv2.drawMatchesKnn(gray1,pts1,gray2,pts2,good,None,**draw_params)
 
+# Save image of the matches
+#cv2.imwrite("ratios.png",img3);
+
 Nb_ok = len(good)
 plt.imshow(img3),plt.title('%i appariements OK'%Nb_ok)
 plt.show()
